@@ -1,0 +1,60 @@
+<%- include('template/_header') %>
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+
+        <h6 style="float: left;">Fiche utilisateur</h6>
+
+    </div>
+
+
+    <form class="row g-3" action="/users/update" method="POST">
+        <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">Nom</label>
+            <input type="text" class="form-control" name="nom" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault02" class="form-label">Prénom</label>
+            <input type="text" class="form-control" name="prenom" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefaultUsername" class="form-label">Email</label>
+            <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input type="email" class="form-control" id="validationDefaultUsername" name="email" required>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <label for="validationDefault04" class="form-label">Profile</label>
+            <select class="form-select" name="role" required>
+
+                <option>utilisateur</option>
+                <option>administrateur</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="validationDefault04" class="form-label">Genre</label>
+            <select class="form-select" name="sexe" required>
+
+                <option>Homme</option>
+                <option>Femme</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="validationDefault05" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </div>
+    </form>
+</main>
+<%- include('template/_footer') %>

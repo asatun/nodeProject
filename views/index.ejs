@@ -1,0 +1,77 @@
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body id="bb">
+
+    <%- include(page) %>
+
+
+</body>
+
+
+</html>
+<script>
+    $(document).ready(function () {
+
+        $("#form").submit(function (event) {
+            event.preventDefault();
+            var $form = $(this)
+            var nom = $form.find("input[id='login']").val();
+            var password = $form.find("input[id='password']").val();
+            var url = $form.attr("action");
+
+
+            $.post('http://localhost:3000/login', {
+                "nom": nom,
+                "password": password
+            }, function (data) {
+
+                if (data == 'ok') {
+                    localStorage.setItem('auth', 'yes');
+                    location.replace("http://localhost:3000/administration")
+                } else {
+                    location.replace("http://localhost:3000/?status=failed")
+                }
+
+            });
+
+
+
+        });
+
+    });
+</script>
+<% if(locals.message == 'no') { %>
+<script>
+    toastr.options = {
+
+        toastClass: 'alert',
+        iconClasses: {
+
+            error: 'alert-error',
+            info: 'alert-info',
+            success: 'alert-success',
+            warning: 'alert-warning'
+        }
+    }
+    toastr.options.timeOut = 1500;
+    toastr.warning("Login ou mot de passe incorrect", "Error");
+</script>
+
+<% } %>
+
+<% if(locals.message == 'logout') { %>
+<script>
+    localStorage.removeItem('auth');
+</script>
+
+<% } %>
