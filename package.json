@@ -7,7 +7,6 @@
   "scripts": {
     "start": "nodemon server.js"
   },
-  
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
@@ -22,6 +21,8 @@
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "toaster-js": "^2.2.3"
+    "toaster-js": "^2.2.3",
+    "moment": "^2.24.0",
+    "socket.io": "^2.4.0"
   }
 }
